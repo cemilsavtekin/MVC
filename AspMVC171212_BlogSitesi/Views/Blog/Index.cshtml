@@ -9,7 +9,10 @@
 <p>
     @Html.ActionLink("Yeni Blog Ekle", "Create",null,new { @class="btn btn-primary"})
 </p>
-<table class="table table-bordered table-striped table-hover">
+
+
+
+<table class="table table-bordered table-striped table-hover" id="tblElemanlar">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Kategori.Ad)
@@ -37,9 +40,16 @@
         <td class="float-right">
             @Html.ActionLink("Edit", "Edit", new { id=item.ID },new {@class="btn btn-warning btn-sm" }) 
             @Html.ActionLink("Details", "Details", new { id=item.ID }, new { @class = "btn btn-info btn-sm" }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { @class = "btn btn-danger btn-sm" })
+
+
+            <a class="btn btn-danger btn-sm silinecekData" data-id="@item.ID" style="color:white">Sil</a>
+
+            @*@Html.ActionLink("Sil", null, new { id=item.ID }, new { @class = "btn btn-danger btn-sm silinecekData"})*@
+         
         </td>
     </tr>
 }
 
 </table>
+
+

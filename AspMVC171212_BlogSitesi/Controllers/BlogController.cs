@@ -10,11 +10,14 @@ using AspMVC171212_BlogSitesi.Models.Entity;
 
 namespace AspMVC171212_BlogSitesi.Controllers
 {
+   
     public class BlogController : Controller
     {
         private BlogContext db = new BlogContext();
 
         // GET: Blog
+
+        [Authorize]
         public ActionResult Index()
         {
             var bloglar = db.Bloglar.Include(b => b.Kategori);
@@ -98,7 +101,7 @@ namespace AspMVC171212_BlogSitesi.Controllers
         public ActionResult Delete(int? id)
         {
             var silinecekVeri = db.Bloglar.Find(id);
-            if (silinecekVeri==null)
+            if (silinecekVeri == null)
             {
                 return HttpNotFound();
             }
@@ -107,7 +110,7 @@ namespace AspMVC171212_BlogSitesi.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
 
         protected override void Dispose(bool disposing)
         {

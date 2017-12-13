@@ -12,7 +12,8 @@
     <!-- Custom styles for this template -->
 
     <link href="~/HomeBlog/css/blog-home.css" rel="stylesheet" />
-    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -37,7 +38,7 @@
                         <a class="nav-link" href="#">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">@HttpContext.Current.User.Identity.Name</a>
                     </li>
                 </ul>
             </div>
@@ -48,7 +49,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-       
+
 
         <footer class="py-5 bg-dark">
             <div class="container">
@@ -59,5 +60,37 @@
     </div>
     <script src="~/HomeBlog/vendor/jquery/jquery.min.js"></script>
     <script src="~/HomeBlog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+   
+
+    <script>
+        $(function () {
+            $('#tblElemanlar').on("click", ".silinecekData", function () {
+                var btn = $(this);
+
+                bootbox.confirm("Bloğu silmek istediğinize emin misiniz", function (result) {
+                    if (result) {
+                        var id = btn.data("id");
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/Blog/Delete/" + id,
+
+                            success: function () {
+                                btn.parent().parent().remove();
+                            },
+
+                            error: function () {
+                                alert("hata oldu");
+                            }
+                        })
+                        
+                }
+
+                }
+                )
+            });
+        });
+    </script>
 </body>
 </html>
