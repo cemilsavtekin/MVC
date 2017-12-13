@@ -1,0 +1,109 @@
+﻿@using AspMVC171212_BlogSitesi.Models.Entity
+@model List<Blog>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-8">
+        <h1 class="my-4">
+            Page Heading
+            <small>Secondary Text</small>
+        </h1>
+        <!-- Blog Post -->
+
+        @if ((int)ViewBag.blogSayisi > 0)
+        {
+            <div class="alert alert-success" role="alert">
+                <strong> @ViewBag.blogSayisi</strong> tane yazı listelendi
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning" role="alert">
+                Blog Bulunamadı 
+            </div>
+        }
+
+
+        @foreach (var blog in Model)
+        {
+            <div class="card mb-4">
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title">@blog.Baslik</h2>
+                    <p class="card-text">@(blog.Detay.Length > 50 ? blog.Detay.Substring(0, 50) + "..." : blog.Detay)</p>
+                    <a href="#" class="btn btn-primary">Daha Fazla</a>
+                </div>
+                <div class="card-footer text-muted">
+                    @blog.Tarih.ToLongDateString()
+                </div>
+            </div>
+        }
+
+
+
+
+    </div>
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+        <!-- Search Widget -->
+        <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Categories Widget -->
+        <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#">Web Design</a>
+                            </li>
+                            <li>
+                                <a href="#">HTML</a>
+                            </li>
+                            <li>
+                                <a href="#">Freebies</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#">JavaScript</a>
+                            </li>
+                            <li>
+                                <a href="#">CSS</a>
+                            </li>
+                            <li>
+                                <a href="#">Tutorials</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AspMVC171212_BlogSitesi.Models.Entity.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni Blog Ekle", "Create",null,new { @class="btn btn-primary"})
+</p>
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td class="float-right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID },new {@class="btn btn-warning btn-sm" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.ID }, new { @class = "btn btn-info btn-sm" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>
