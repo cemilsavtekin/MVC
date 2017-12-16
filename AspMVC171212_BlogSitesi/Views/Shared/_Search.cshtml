@@ -1,0 +1,17 @@
+﻿
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div class="card my-4">
+        <h5 class="card-header">Arama</h5>
+        <div class="card-body">
+            <div class="input-group">
+                @Html.TextBox("q",null,new {@class= "form-control" })
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">Ara</button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
+

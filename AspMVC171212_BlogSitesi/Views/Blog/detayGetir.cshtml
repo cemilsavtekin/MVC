@@ -1,0 +1,16 @@
+﻿@using AspMVC171212_BlogSitesi.Models.Entity
+@model Blog
+<div class="container">
+  
+    <h1 class="mt-4">@Model.Baslik</h1>
+   
+   
+    <hr>
+  
+    <p>@DateTime.Now.ToLongDateString()</p>
+    <hr>
+ 
+    <!-- Post Content -->
+    <p>@Model.Detay</p>
+   
+</div>

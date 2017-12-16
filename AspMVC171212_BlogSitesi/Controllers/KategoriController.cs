@@ -102,6 +102,14 @@ namespace AspMVC171212_BlogSitesi.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public PartialViewResult KategoriListesi()
+        {
+            return PartialView(db.Kategoriler.ToList());
+        }
+
+
+
        
 
         protected override void Dispose(bool disposing)

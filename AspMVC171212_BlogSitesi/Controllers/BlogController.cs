@@ -17,7 +17,9 @@ namespace AspMVC171212_BlogSitesi.Controllers
 
         // GET: Blog
 
-        [Authorize]
+            //section mvc şu kavrama bakılmalı
+
+        //[Authorize(Roles ="Admin,User")]
         public ActionResult Index()
         {
             var bloglar = db.Bloglar.Include(b => b.Kategori);
@@ -110,6 +112,11 @@ namespace AspMVC171212_BlogSitesi.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult detayGetir(int id)
+        {
+            return PartialView(db.Bloglar.Find(id));
+        }
 
 
         protected override void Dispose(bool disposing)
